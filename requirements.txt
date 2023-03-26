@@ -9,4 +9,4 @@ pandas==1.5.3
 Pillow==9.4.0
 streamlit==1.20.0
 wordcloud==1.8.2.2
-pip install db-dtypes==0.1.1
+db-dtypes==0.1.1
