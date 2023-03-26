@@ -11,6 +11,8 @@ from tempfile import NamedTemporaryFile
 import json
 from google.oauth2 import service_account
 from datetime import datetime, timedelta
+import base64
+from io import StringIO
 
 st.title("Lens Hashtags Word Cloud Generator")
 
@@ -118,6 +120,12 @@ def generate_word_cloud(frequencies, mask_image, background_color):
         temp_image = Image.open(temp_file.name)
         st.image(temp_image)
 
+def create_csv_download_link(df, title="Download CSV file", filename="data.csv"):
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()
+    href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">{title}</a>'
+    return href
+
 
 mask_image = Image.open("lens_logo_thick.png")
 
@@ -130,3 +138,14 @@ with st.spinner("Generating word cloud..."):
 
 
 st.write(df)
+
+# Add a button to download the data as a CSV file
+st.markdown(create_csv_download_link(df), unsafe_allow_html=True)
+
+# Add a chart showing the distribution of values of the total_upvotes column
+st.subheader("Total Upvotes Distribution")
+fig, ax = plt.subplots()
+ax.hist(df['total_upvotes'], bins=50)
+ax.set_xlabel("Total Upvotes")
+ax.set_ylabel("Frequency")
+st.pyplot(fig)
