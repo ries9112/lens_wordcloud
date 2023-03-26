@@ -12,7 +12,7 @@ import json
 from google.oauth2 import service_account
 from datetime import datetime, timedelta
 
-st.title("Word Cloud Generator")
+st.title("Lens Hashtags Word Cloud Generator")
 
 # bigquery client login
 credentials = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"])
