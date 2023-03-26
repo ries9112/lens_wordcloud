@@ -10,6 +10,7 @@ from io import BytesIO
 from tempfile import NamedTemporaryFile
 import json
 from google.oauth2 import service_account
+from datetime import datetime, timedelta
 
 st.title("Word Cloud Generator")
 
@@ -69,8 +70,8 @@ LIMIT 300
 """
 
 # Add date input widgets
-start_date = st.sidebar.date_input("Start date", value=pd.to_datetime("2023-03-01"))
-end_date = st.sidebar.date_input("End date", value=pd.to_datetime("2023-03-30"))
+start_date = st.sidebar.date_input("Start date", value=datetime.now() - timedelta(days=90))
+end_date = st.sidebar.date_input("End date", value=datetime.now())
 
 # Format the dates for the SQL query
 start_date_str = start_date.strftime("%Y-%m-%d 00:00:00")
