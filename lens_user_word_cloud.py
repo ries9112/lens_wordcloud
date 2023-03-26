@@ -19,7 +19,9 @@ import string
 
 st.title("Lens User Word Cloud Generator")
 
-client = bigquery.Client.from_service_account_json("mlflow-291816-6d2188fa7f42.json")
+# bigquery client login
+credentials = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"])
+client = bigquery.Client(credentials=credentials)
 
 # Add a text input box for entering the user handle
 user_handle = st.text_input("Enter a user handle:")
