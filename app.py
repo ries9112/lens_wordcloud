@@ -8,6 +8,7 @@ from google.cloud import bigquery
 import os
 from io import BytesIO
 from tempfile import NamedTemporaryFile
+import json
 
 st.title("Word Cloud Generator")
 
