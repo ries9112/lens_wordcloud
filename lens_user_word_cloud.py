@@ -24,7 +24,7 @@ credentials = service_account.Credentials.from_service_account_info(st.secrets["
 client = bigquery.Client(credentials=credentials)
 
 # Add a text input box for entering the user handle
-user_handle = st.text_input("Enter a user handle:")
+user_handle = st.text_input("Enter a user handle:", "rickydata.lens")
 
 def process_content(content_series):
     content_str = ' '.join(content_series)
