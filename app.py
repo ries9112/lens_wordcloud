@@ -12,7 +12,7 @@ from tempfile import NamedTemporaryFile
 st.title("Word Cloud Generator")
 
 # bigquery client
-client = bigquery.Client.from_service_account_json("mlflow-291816-6705e5e68493.json")
+client = bigquery.Client.from_service_account_json(st.secrets["google_application_credentials_json"])
 
 # Define your SQL query
 sql_query_template = """
