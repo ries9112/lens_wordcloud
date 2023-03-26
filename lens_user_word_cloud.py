@@ -17,11 +17,94 @@ import re
 from collections import Counter
 import string
 
-st.title("Lens User Word Cloud Generator")
+# add custom css
+def custom_css():
+    st.markdown("""
+    <style>
+        /* Hide the default Streamlit background */
+        .stApp {
+            background-color: transparent !important;
+        }
 
-# bigquery client login
-credentials = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"])
-client = bigquery.Client(credentials=credentials)
+        /* Set global text color */
+        body {
+            color: #4b7f40; /* Dark green */
+        }
+
+        /* Customize headings */
+        h1, h2, h3, h4, h5 {
+            font-family: "Cursive", "Comic Sans MS", sans-serif;
+            color: #4b7f40; /* Dark green */
+        }
+
+        /* Customize text input */
+        .stTextInput input {
+            font-family: "Cursive", "Comic Sans MS", sans-serif;
+            color: #4b7f40; /* Dark green */
+            background-color: #f1f8ea;
+        }
+
+        /* Customize input label */
+        .stTextInput label {
+            color: #4b7f40; /* Dark green */
+        }
+
+        /* Customize radio buttons */
+        .stRadio label {
+            font-family: "Cursive", "Comic Sans MS", sans-serif;
+            color: #4b7f40; /* Dark green */
+        }
+
+        /* Customize buttons */
+        button {
+            font-family: "Cursive", "Comic Sans MS", sans-serif;
+            background-color: #4b7f40;
+            color: white;
+        }
+
+        /* Customize tables */
+        table {
+            font-family: "Cursive", "Comic Sans MS", sans-serif;
+            color: #4b7f40; /* Dark green */
+            background-color: #f1f8ea;
+        }
+
+        /* Customize table header */
+        th {
+            background-color: #4b7f40;
+            color: white;
+        }
+
+        /* Customize table rows */
+        tr:nth-child(odd) {
+            background-color: #f1f8ea;
+        }
+
+        tr:nth-child(even) {
+            background-color: #c8e4c3;
+        }
+
+        /* Customize images */
+        img {
+            border: 3px solid #4b7f40;
+            border-radius: 5px;
+        }
+
+    </style>
+    """, unsafe_allow_html=True)
+
+    # Add the background GIF using HTML
+    st.markdown("""
+    <div style="position: fixed; z-index: -1; top: 0; left: 0; right: 0; bottom: 0;">
+        <img src="https://raw.githubusercontent.com/lens-protocol/brand-kit/main/Animations/Lens-Anim4_16x10.gif" alt="background gif" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    """, unsafe_allow_html=True)
+
+# Call the custom_css function at the beginning of your Streamlit script
+custom_css()
+
+
+st.title("Lens User Word Cloud Generator")
 
 # Add a text input box for entering the user handle
 user_handle = st.text_input("Enter a user handle:", "rickydata.lens")
@@ -107,4 +190,4 @@ if profile_id:
     st.subheader("Word Frequencies")
     st.write(word_freqs_df)
 else:
-    st.warning("No data found for the given user handle.")
+    st.warning("No data found for the given user handle.")                 
