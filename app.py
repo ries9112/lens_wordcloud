@@ -11,8 +11,10 @@ from tempfile import NamedTemporaryFile
 
 st.title("Word Cloud Generator")
 
-# bigquery client
-client = bigquery.Client.from_service_account_json(st.secrets["google_application_credentials_json"])
+# bigquery client login
+google_credentials_json = st.secrets["google_application_credentials_json"]
+google_credentials_dict = json.loads(google_credentials_json)
+client = bigquery.Client.from_service_account_json(google_credentials_dict)
 
 # Define your SQL query
 sql_query_template = """
