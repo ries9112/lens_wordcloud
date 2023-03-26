@@ -13,9 +13,8 @@ import json
 st.title("Word Cloud Generator")
 
 # bigquery client login
-google_credentials_json = st.secrets["google_application_credentials_json"]
-google_credentials_dict = json.loads(google_credentials_json)
-client = bigquery.Client.from_service_account_json(google_credentials_dict)
+credentials = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"])
+client = bigquery.Client(credentials=credentials)
 
 # Define your SQL query
 sql_query_template = """
