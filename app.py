@@ -9,6 +9,7 @@ import os
 from io import BytesIO
 from tempfile import NamedTemporaryFile
 import json
+from google.oauth2 import service_account
 
 st.title("Word Cloud Generator")
 
