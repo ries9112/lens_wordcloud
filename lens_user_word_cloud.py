@@ -17,6 +17,10 @@ import re
 from collections import Counter
 import string
 
+# bigquery client login
+credentials = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"])
+client = bigquery.Client(credentials=credentials)
+
 # add custom css
 def custom_css():
     st.markdown("""
