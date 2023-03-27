@@ -11,8 +11,8 @@ Before you can run the application, you'll need to have a Google Cloud Platform 
 1. Clone the repository to your local machine:
 
 ```
-git clone https://github.com/yourusername/lens_user_word_cloud.git
-cd lens_user_word_cloud
+git clone https://github.com/ries9112/lens_wordcloud.git
+cd lens_wordcloud
 ```
 
 2. Set up a virtual environment (optional):
